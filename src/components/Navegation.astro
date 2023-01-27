@@ -1,0 +1,22 @@
+---
+const { routes } = Astro.props;
+---
+
+<header>
+  {routes.map((route) => <a href={route.url}>{route.name}</a>)}
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #333;
+    color: #fff;
+  }
+  header a {
+    color: #fff;
+    text-decoration: none;
+  }
+</style>

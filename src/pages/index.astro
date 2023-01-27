@@ -1,0 +1,61 @@
+---
+import Button from "../components/Button";
+import Layout from "../layouts/Layout.astro";
+
+const allPosts = await Astro.glob("./posts/*.md");
+---
+
+<Layout title="Inicio">
+  <main>
+    <h1>Pedrito Manosalvadora</h1>
+    <h3>Bienvenido a mi blog y portafolio perosnal</h3>
+
+    <p>
+      Este es un blog personal donde comparto mis experiencias y conocimientos
+      en el mundo de la programación y el desarrollo web.
+    </p>
+
+    <br /><br /><br />
+
+    <h2>Ultimos articulos</h2>
+
+    {
+      allPosts.map((post) => (
+        <div class="posts">
+          <h4>{post.frontmatter.title}</h4>
+          <p>{post.frontmatter.description}</p>
+          <a>Leer mas</a>
+        </div>
+      ))
+    }
+
+    <br /><br /><br />
+    <div class="min"></div>
+    <Button client:visible />
+  </main>
+</Layout>
+
+<style>
+  .min {
+    min-height: 100vh;
+  }
+  .posts {
+    margin-bottom: 2rem;
+    border: 2px dotted tomato;
+  }
+
+  .posts h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .posts p {
+    margin-bottom: 0.5rem;
+  }
+
+  .posts a {
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: tomato;
+  }
+</style>

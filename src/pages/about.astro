@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const allProjects = await Astro.glob("./projects/*.md");
+---
+
+<Layout title="About">
+  <h1>Pedrito Manosalvadora</h1>
+
+  <p>
+    Soy un caminante de la vida, un buscador de la verdad, un amante de la
+    libertad, un luchador por la justicia. Soy un hombre que busca la felicidad,
+    que busca la paz, que busca la armonía.
+  </p>
+
+  <img src="/foto-de-perfil.png" alt="Foto de perfil" />
+
+  <h2>Mis pasiones</h2>
+  <ul>
+    <li>
+      <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">La música</a>
+    </li>
+
+    <li>
+      <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">El cine</a>
+    </li>
+
+    <li>
+      <a href="https://www.youtube.com/watch?v=QH2-TGUlwu4">La literatura</a>
+    </li>
+  </ul>
+
+  <h2>Mis proyectos</h2>
+
+  {
+    allProjects.map((project) => (
+      <div>
+        <h3>{project.frontmatter.title}</h3>
+        <p>{project.frontmatter.description}</p>
+      </div>
+    ))
+  }
+</Layout>
+
+<style>
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  h1 {
+    color: tomato;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 1rem;
+  }
+</style>
